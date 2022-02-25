@@ -1,0 +1,68 @@
+
+function FindProxyForURL(url, host)
+{
+// Loopback and localhost goes browser direct always.
+	var reip;
+	if ((host == "localhost") ||
+           (shExpMatch(host, "localhost.*")) ||
+           (shExpMatch(host,"10.*")) ||
+           (shExpMatch(host,"172.16.*")) || 
+           (shExpMatch(host,"192.168.*")) ||
+           (shExpMatch(host,"144.16.128.*")) ||
+           (host == "127.0.0.1")) {
+		return "DIRECT";
+	} 
+// JEE by pass
+	if (dnsDomainIs(host, "jeeonline.iitd.ac.in")) {
+		return "PROXY 10.10.78.22:3128";
+	}
+// JEEadvonline by pass
+        if (dnsDomainIs(host, "jeeadvonline.iitd.ac.in")) {
+                return "PROXY 10.10.78.22:3128";
+        }
+// JEEADV by pass
+        if (dnsDomainIs(host, "jeeadv.iitd.ac.in")) {
+                return "PROXY 10.10.78.22:3128";
+        }
+// JEEadvonline by pass
+        if (dnsDomainIs(host, "jeeadv.iitd.ac.in")) {
+                return "PROXY 10.10.78.22:3128";
+        }
+// appsgate.iitd.ac.in by pass
+        if (dnsDomainIs(host, "appsgate.iitd.ac.in")) {
+                return "PROXY 10.10.78.22:3128";
+        }
+// gateadmin.iitd.ac.in by pass
+        if (dnsDomainIs(host, "gateadmin.iitd.ac.in")) {
+                return "PROXY 10.10.78.22:3128";
+        }
+// Alumni.iitd.ac.in by pass
+        if (dnsDomainIs(host, "alumni2.iitd.ac.in")) {
+                return "PROXY 10.10.78.22:3128";
+        }
+// endowment.iitd.ac.in by pass
+        if (dnsDomainIs(host, "endowment.iitd.ac.in")) {
+                return "PROXY 10.10.78.22:3128";
+        }
+// endowment.iitd.ernet.in by pass
+        if (dnsDomainIs(host, "endowment.iitd.ernet.in")) {
+                return "PROXY 10.10.78.22:3128";
+        }
+// Local Sites
+	if (dnsDomainIs(host, ".iitd.ernet.in") ||
+	   dnsDomainIs(host, ".iitd.ac.in")) {
+		return "DIRECT";
+	}
+// Test to see if host is an IP address
+	reip = /^\d+\.\d+\.\d+\.\d+$/g;
+	if (reip.test(host)) {
+		if (isInNet(host, "10.0.0.0", "255.0.0.0") ||
+		    isInNet(host, "172.16.0.0", "255.255.0.0") ||
+		    isInNet(host, "144.16.128.0", "255.255.240.0") ||
+		    isInNet(host,"192.168.0.0", "255.255.0.0")) {
+			 return "DIRECT";
+		}
+	}
+
+	return "PROXY 10.10.78.22:3128";
+}
