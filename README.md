@@ -5,8 +5,8 @@
 
 Here are some ideas to get you started:-->
 
-- 🔭 I’m currently working on Smart Home
-- 🌱 I’m currently learning Angular
+- 🔭 I’m currently working on getting a job 😉
+- 🌱 I’m currently learning ML
 - 👯 I’m looking to collaborate on Web Development
 - 💬 Ask me about IoT, Web Development, JavaScript
 - 📫 How to reach me: https://instagram.com/jasrajsb
